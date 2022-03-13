@@ -6,7 +6,7 @@ const createMessage = async(req, res) => {
         const newMessage = await Message.create({name, age, message});
         res.status(201).json({message: 'message created successfully', data: newMessage})
     } catch(error) {
-        res.status(400).json({message: "Invalid message", error: error.message})
+        res.status(400).json({message: "Invalid message"})
     }
 }
 
@@ -22,9 +22,8 @@ const getAllMessages = async(req, res) => {
 const getSingleMessage = async(req, res) => {
     const {id} = req.params;
 
-    const message = await Message.findById(id);
-
     try {
+        const message = await Message.findById(id);
         res.status(200).json({data: message})
     } catch (error) {
         res.status(404).json({message: "Error invalid message id"})
