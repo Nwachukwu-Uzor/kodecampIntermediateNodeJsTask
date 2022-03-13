@@ -1,5 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 
 // Routes
@@ -7,10 +10,9 @@ const MessageRoute = require('./Routes/Message.js');
 
 
 const PORT = 5000;
-const CONNECTION_STRING = 'mongodb+srv://javacriptMS:rJTY3Cc14rIhgKkc@cluster0.4p5te.mongodb.net/kodecamp?retryWrites=true&w=majority';
 
 const app = express();
-mongoose.connect(CONNECTION_STRING, 
+mongoose.connect(process.env.CONNECTION_STRING, 
   {
     useNewUrlParser: true,
     useUnifiedTopology: true
